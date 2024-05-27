@@ -120,6 +120,34 @@ Disclaimer: these ideas are not my own but rather a collection of general advice
     func foo() { ... }
     ```
 
+1. In go, utilize early returns and guard statements to reduce complexity nested logic. If you find a situation where you are using an `if/else` statement, try and change the logic to check the else condition first and exit the function early. This leads to a situation where the 'happy path' for the function exits at the bottom of the function.
+
+    ```go
+    // Good
+    func greaterThanTen(value int) string {
+        if value < 5 {
+            return "less than 5"
+        }
+
+        if value < 10 {
+            return "greater than 5"
+        }
+
+        return "greater than 10"
+    }
+
+    // Bad
+    func greaterThanTen(value int) string {
+        if value > 10 {
+            return "greater than 10"
+        } else if value >= 5 {
+            return "greater than 5"
+        } else {
+            return "less than 5"
+        }
+    }
+    ```
+
 1. Named return values should only be used for documentation purposes and should not be relied on within code. Furthermore, if a named return value is defined, you should not use a naked `return` as this can cause unexpected side affects as the named value will be returned in its current state.
 
     ```go
