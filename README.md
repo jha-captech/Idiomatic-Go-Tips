@@ -6,6 +6,7 @@
 - [Functions](#functions)
 - [Structs and Methods](#structs-and-methods)
 - [Interfaces](#interfaces)
+- [Concurrency](#concurrency)
 
 <a id="intro"></a>
 ## Introduction
@@ -18,9 +19,9 @@ Disclaimer: these ideas are not my own but rather a collection of general advice
 - [Go Style Decisions](https://google.github.io/styleguide/go/decisions.html)
 
 <a id="naming"></a>
-## Naming Things
+## 1. Naming Things
 
-1. In Go, objects that have the first letter of their name capitalized are exported and can be accessed from outside of the package in which they are defined. The same goes for struct fields. This is Called MixedCaps naming or pascal case. In contract, objects that are internal only start with a lower case letter and use camel case.
+1. In Go, objects that have the first letter of their name capitalized are exported and can be accessed from outside of the package in which they are defined. The same goes for struct fields. This is Called MixedCaps naming or pascal case. In contrast, objects that are internal only start with a lowercase letter and use camel case.
 
     ```go
     var aVar string // not exported
@@ -51,7 +52,7 @@ Disclaimer: these ideas are not my own but rather a collection of general advice
 1. It is not encouraged to use the `IInterface` naming convention for structs that is found in other languages.
 
 <a id="errors"></a>
-## Errors
+## 1   2. Errors
 
 1. Return errors as values, don't use `Panic()` (often). Arguably Go's most noticeable feature is that their is no real `try/catch` functionality (Yes, you can recover from a panic, but thats as common).Because of this, errors are just values returned by functions and should be treated as such.
 
@@ -111,7 +112,7 @@ Disclaimer: these ideas are not my own but rather a collection of general advice
     ```
 
 <a id="functions"></a>
-## Functions
+## 3. Functions
 
 1. In Go, functions are documented by placing a comment above their definition. It is recommended to use full sentences with proper capitalization and punctuation
 
@@ -173,7 +174,7 @@ Disclaimer: these ideas are not my own but rather a collection of general advice
     ```
 
 <a id="structs-and-methods"></a>
-## Structs and Methods
+## 4. Structs and Methods
 
 1. Use struct constructors, especially when validation is needed. This give more control over creating of the object and offers a layer of abstraction.
 
@@ -225,5 +226,8 @@ Disclaimer: these ideas are not my own but rather a collection of general advice
     ```
 
 <a id="interfaces"></a>
-## Interfaces
+## 5. Interfaces
 Stuff about interfaces
+
+<a id="concurrency"></a>
+## 6. Concurrency
